@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="birthdayMessage" style="font-family:'Times New Roman', Times, serif">Happy birthday!</h1>
+    <!-- <audio id="birthdaySong" src="happyBirthday.mp3" preload="auto"></audio> -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script>
+        // function playSong() {
+        //     document.getElementById('birthdaySong').play();
+        // }
+
+        let languages = ['en', 'vi', 'zh', 'ja', 'ru'];
+        let translations = [];
+
+        async function getTranslations() {
+            for (let lang of languages) {
+                let response = await fetch(`https://api.mymemory.translated.net/get?q=Happy%20Birthday!&langpair=en|${lang}`);
+                let data = await response.json();
+                translations.push(data.responseData.translatedText);
+            }
+            startTypingAnimation();
+        }
+
+        function startTypingAnimation() {
+            console.log(translations);
+            new Typed('#birthdayMessage', {
+                strings: translations,
+                typeSpeed: 30,
+                backSpeed: 20,
+                loop: true,
+                showCursor: false,
+            });
+        }
+
+        getTranslations();
+    </script>
+</body>
+
+</html>

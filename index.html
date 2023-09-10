@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <p id="demo">Wait for 5 seconds</p>
+
+    <div id="myModal" class="modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmation</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are you a robot?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="yes">Yes</button>
+                    <button type="button" class="btn btn-secondary" id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+<script>
+    var timeLeft = 5;
+    var elem = document.getElementById('demo');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == 0) {
+            clearTimeout(timerId);
+            $('#myModal').modal('show');
+        } else {
+            elem.innerHTML = 'Wait for ' + timeLeft + ' seconds';
+            timeLeft--;
+        }
+    }
+
+    document.getElementById("yes").onclick = function () {
+        window.location.replace("jmpscr.html");
+    }
+
+    document.getElementById("no").onclick = function () {
+        window.location.replace("first.html");
+    }
+</script>
+
+</html>

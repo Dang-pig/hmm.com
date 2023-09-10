@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <p id="demo">Wait for 5 seconds</p>
+
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hint">Question 🤔</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="code">Do you love me?</p>
+                </div>
+                <div class="modal-footer" id="butt">
+                    <button type="button" class="btn btn-primary" id="yes">Yes</button>
+                    <button type="button" class="btn btn-secondary" id="no">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+<script>
+    var timeLeft = 5;
+    var elem = document.getElementById('demo');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == 0) {
+            clearTimeout(timerId);
+            $('#myModal').modal('show');
+        } else {
+            elem.innerHTML = 'Wait for ' + timeLeft + ' seconds';
+            timeLeft--;
+        }
+    }
+
+    document.getElementById("no").onclick = function () {
+        window.location.replace("jmpscr.html")
+    }
+
+    document.getElementById("yes").onclick = function () {
+        document.getElementById("butt").style.display = "none";
+        document.getElementById("code").innerHTML = "01101000 01110100 01110100 01110000 01110011 00111010 00101111 00101111 01100100 01101111 01100011 01110011 00101110 01100111 01101111 01101111 01100111 01101100 01100101 00101110 01100011 01101111 01101101 00101111 01100100 01101111 01100011 01110101 01101101 01100101 01101110 01110100 00101111 01100100 00101111 00110001 00110100 01101111 01000100 01001110 01110011 01000100 01010101 01110101 00110001 00110011 01100111 00110111 01010101 01101110 01001100 01100101 00111000 01001111 01001111 01111010 01110101 01100010 00110100 01100001 01110101 01001100 01000100 00111000 01000111 01010011 01110111 01110000 00110000 01100011 00111000 01110001 01111001 01000111 01000100 01101000 01100011 01111001 01000101 00101111 01100101 01100100 01101001 01110100 00111111 01110101 01110011 01110000 00111101 01110011 01101000 01100001 01110010 01101001 01101110 01100111";
+        document.getElementById("hint").innerHTML = "Use https://www.binarytranslator.com/";
+        document.getElementById("hint").style.fontSize = "30px";
+    }
+</script>
+
+</html>
